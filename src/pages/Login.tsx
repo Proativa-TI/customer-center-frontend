@@ -1,4 +1,5 @@
 import GoogleIcon from "@mui/icons-material/Google";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Button,
@@ -29,29 +30,49 @@ const Login = (): JSX.Element => {
         position: "relative",        
       }}
     >
-    <Box sx={{ width: "100%",  textAlign: "center", justifyContent: "center" , display: "flex" }}>
-      <Box sx={{ width: 400, textAlign: "center" }}>
+    <Box sx={{
+          width: "100%",
+          textAlign: "center",
+          justifyContent: "center",
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+        }}>
+      <Box sx={{ width: { xs: "100%", sm: 400 }, textAlign: "center", marginBottom: 1,}}>
+        {/* Logo */}
         <Img
             src={logo}
             loader={
-            <Typography variant="h5" gutterBottom>
+              <Typography variant="h5" gutterBottom>
                 Loading...
-            </Typography>
+              </Typography>
             }
             unloader={
-            <Typography variant="h5" gutterBottom>
+              <Typography variant="h5" gutterBottom>
                 Failed to load.
-            </Typography>
+              </Typography>
             }
-            style={{ width: "300px", marginBottom: "50px", textAlign: "center", justifyContent: "center" }}
-        />
-        <Box sx={{ width: 450, textAlign: "center", display: "flex", justifyContent: "center" }}>
-            <Typography variant="h4" gutterBottom>
+            style={{
+              width: "80%",
+              maxWidth: "300px",
+              marginBottom: "45px",
+              textAlign: "center",
+            }}
+          />
+        <Box sx={{ width: "100%", textAlign: "center", }}>
+            <Typography variant="h5" gutterBottom>
                 Login
             </Typography>
         </Box>
         
-        <Box sx={{ width: 400, textAlign: "center", backgroundColor: "#F1F1F1", padding: 3, borderRadius: 2, marginBottom: 15,}}>
+        <Box
+            sx={{
+              width: { xs: "100%", sm: 400 },
+              textAlign: "center",
+              backgroundColor: "#F1F1F1",
+              padding: { xs: 2, sm: 3 },
+              borderRadius: 2,
+            }}
+          >
         <TextField
           fullWidth
           label="Email ou Usuário"
@@ -84,15 +105,22 @@ const Login = (): JSX.Element => {
           fullWidth
           variant="contained"
           color="primary"
-          sx={{ marginBottom: 2, width: 150, backgroundColor: "#F26130", padding: 1, }}
+          sx={{ marginBottom: 1, width: { xs: "100%", sm: 150 }, backgroundColor: "#F26130", padding: 1, }}
         >
           Acessar
         </Button>
         <Typography variant="body2" gutterBottom>
-          Não possui conta? <Link href="#">Cadastre-se</Link>
+              Não possui conta?{" "}
+              <Link
+                component={RouterLink}
+                to="/cadastro"
+                sx={{ cursor: "pointer" }}
+              >
+                Cadastre-se
+              </Link>
         </Typography>
-        <Box sx={{ width: 400, textAlign: "center", display: "flex", justifyContent: "center" }}>
-            <Divider sx={{ marginY: 2, itemAlign: "center", width: 200 }} />
+        <Box sx={{ width: "100%", textAlign: "center", display: "flex", justifyContent: "center" }}>
+            <Divider sx={{ marginY: 2, itemAlign: "center", width: 150, }} />
         </Box>
         <Typography variant="body2" gutterBottom>
           Ou acesse com:
@@ -109,37 +137,62 @@ const Login = (): JSX.Element => {
         </Box>
         </Box>
       </Box>
+      {/* Footer */}
       <Box
+        id="cadastro-footer"
+        className="cadastro-footer"
         sx={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            width: "100%",
-            height: "60px", 
-            backgroundColor: "#ffffff",
-            display: "flex-container",
-            alignItems: "center",
-            justifyContent: "space-beteween",
-            marginBottom: 5,
-        }}>
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: { xs: "10px", sm: "15px" },
+          backgroundColor: "#ffffff",
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: { xs: 2, sm: 3 },
+        }}
+      >
         <Img
-            src={redeSocial} 
-            loader={<Typography variant="h6" gutterBottom>Loading...</Typography>}
-            unloader={<Typography variant="h6" gutterBottom>Failed to load.</Typography>
+            id="cadastro-rede-social"
+            className="cadastro-rede-social"
+            src={redeSocial}
+            loader={
+                <Typography variant="h6" gutterBottom>
+                Loading...
+                </Typography>
             }
-            style={{ width: "auto", height: '20px', textAlign: "left", justifyContent: "left", }}
-        />
-        <Box sx={{ textAlign: "right", justifyContent: "right",}}>
-            <Img
-                src={loginCerts} 
-                loader={<Typography variant="h6" gutterBottom>Loading...</Typography>}
-                unloader={<Typography variant="h6" gutterBottom>Failed to load.</Typography>
-                }
-                style={{ width: "auto", height: '100px', textAlign: "right", justifyContent: "right" }}
+            unloader={
+                <Typography variant="h6" gutterBottom>
+                Failed to load.
+                </Typography>
+            }
+            style={{ width: "auto", height: "19px" }}
             />
+        <Box
+          id="cadastro-login-certs"
+          className="cadastro-login-certs"
+          sx={{ textAlign: "right", justifyContent: "right",  }}
+        >
+          <Img
+            src={loginCerts}
+            loader={
+            <Typography variant="h6" gutterBottom>
+                Loading...
+            </Typography>
+            }
+            unloader={
+            <Typography variant="h6" gutterBottom>
+                Failed to load.
+            </Typography>
+            }
+            style={{ width: "auto", height: "70px" }}
+        />
         </Box>
-    </Box>
+      </Box>
     </Container>
   );
 };
