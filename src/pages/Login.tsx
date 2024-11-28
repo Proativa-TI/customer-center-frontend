@@ -53,7 +53,7 @@ const Login = (): JSX.Element => {
             }
             style={{
               width: "80%",
-              maxWidth: "300px",
+              maxWidth: "350px",
               marginBottom: "45px",
               textAlign: "center",
             }}
