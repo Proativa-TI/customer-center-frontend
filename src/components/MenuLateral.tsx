@@ -36,7 +36,7 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
   const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>(
     {}
   );
-
+  
   const toggleSubmenu = (text: string) => {
     setOpenSubmenus((prevState) => ({
       ...prevState,
