@@ -31,7 +31,6 @@ const Cadastro = (): JSX.Element => {
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
-        paddingX: 2,
       }}
     >
       <Box
@@ -49,9 +48,9 @@ const Cadastro = (): JSX.Element => {
           id="cadastro-form-box"
           className="cadastro-form-box"
           sx={{
-            width: { xs: "100%", sm: 400 },
+            width: { xs: "100%", sm: 400, },
             textAlign: "center",
-            marginBottom: 1, // Espaço entre o formulário e o footer
+            marginBottom: 20,
           }}
         >
           {/* Logo */}
@@ -205,7 +204,7 @@ const Cadastro = (): JSX.Element => {
         className="cadastro-footer"
         sx={{
           position: "absolute",
-          bottom: 0,
+          bottom: 10,
           left: 0,
           right: 0,
           width: "100%",
@@ -237,7 +236,7 @@ const Cadastro = (): JSX.Element => {
         <Box
           id="cadastro-login-certs"
           className="cadastro-login-certs"
-          sx={{ textAlign: "right", justifyContent: "right",  }}
+          sx={{ textAlign: "right", justifyContent: "right", }}
         >
           <Img
             src={loginCerts}

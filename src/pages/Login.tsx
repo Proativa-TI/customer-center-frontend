@@ -37,7 +37,7 @@ const Login = (): JSX.Element => {
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
         }}>
-      <Box sx={{ width: { xs: "100%", sm: 400 }, textAlign: "center", marginBottom: 1,}}>
+      <Box sx={{ width: { xs: "100%", sm: 400 }, textAlign: "center", marginBottom: 20,}}>
         {/* Logo */}
         <Img
             src={logo}
@@ -143,7 +143,7 @@ const Login = (): JSX.Element => {
         className="cadastro-footer"
         sx={{
           position: "absolute",
-          bottom: 0,
+          bottom: 10,
           left: 0,
           right: 0,
           width: "100%",
