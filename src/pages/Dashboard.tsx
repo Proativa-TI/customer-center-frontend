@@ -1,31 +1,129 @@
 import React from "react";
 import { Grid, Paper, Typography, Box } from "@mui/material";
+import SettingsIcon from "@mui/icons-material/Settings";
+import homeIcon from "../assets/dash-home-icon.png";
+import configIcon from "../assets/config-orange-icon.png";
+import { Img } from "react-image";
 
 const Dashboard = () => {
   const cardData = [
-    { title: "Cloud", content: "Servidores ativos: 3\nRecursos utilizados:\n\n4 vCPUs\n500gb Armazenamento\n16gb memoria RAM" },
-    { title: "Faturas", content: "Total: R$ 1500\nÚltimo pagamento: 10/11/2024" },
-    { title: "Chamados", content: "Chamados abertos: 2\nChamados resolvidos: 5" },
+    {
+      title: "Cloud",
+      content: "Servidores ativos: 3\nRecursos utilizados:\n\n4 vCPUs\n500gb Armazenamento\n16gb memória RAM",
+    },
+    {
+      title: "Faturas",
+      content: "Servidores ativos: 3\nRecursos utilizados:\n\n4 vCPUs\n500gb Armazenamento\n16gb memória RAM",
+    },
+    {
+      title: "Chamados",
+      content: "Servidores ativos: 3\nRecursos utilizados:\n\n4 vCPUs\n500gb Armazenamento\n16gb memória RAM",
+    },
+    {
+      title: "Infra",
+      content: "Servidores ativos: 3\nRecursos utilizados:\n\n4 vCPUs\n500gb Armazenamento\n16gb memória RAM",
+    },
+    {
+      title: "News",
+      content: "Servidores ativos: 3\nRecursos utilizados:\n\n4 vCPUs\n500gb Armazenamento\n16gb memória RAM",
+    },
+    {
+      title: "Atendimentos",
+      content: "Servidores ativos: 3\nRecursos utilizados:\n\n4 vCPUs\n500gb Armazenamento\n16gb memória RAM",
+    },
   ];
 
   return (
-    <Box>
+    <Box sx={{ padding: 1 }}>
+      
       <Typography variant="h4" gutterBottom>
-        Dashboard
+      <Img
+            src={homeIcon}
+            loader={
+              <Typography variant="h5" gutterBottom>
+                Loading...
+              </Typography>
+            }
+            unloader={
+              <Typography variant="h5" gutterBottom>
+                Failed to load.
+              </Typography>
+            }
+            style={{
+            }}
+          /> Dashboard
       </Typography>
       <Grid container spacing={3}>
         {cardData.map((card, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Paper sx={{ p: 2 }}>
-              <Box>
-                <Typography variant="h5" gutterBottom>
-                  {card.title}
-                </Typography>
-                <Typography variant="body1" style={{ whiteSpace: "pre-line" }}>
-                  {card.content}
-                </Typography>
-              </Box>
-            </Paper>
+            <Box sx={{ position: "relative" }}>
+              <Paper
+                elevation={0} // Remove sombras (borda visual)
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  backgroundColor: "#f1f1f1",
+                  borderRadius: "5px",
+                  padding: "16px 16px 16px 30px", // Espaço extra à esquerda para a barra laranja
+                  overflow: "hidden",
+                  position: "relative",
+                }}
+              >
+                {/* Barra Lateral Laranja */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: 10,
+                    height: "100%",
+                    backgroundColor: "#ff6b35",
+                    borderRadius: "5px 0 0 5px",
+                  }}
+                />
+                {/* Conteúdo do Card */}
+                <Box>
+                  <Box sx={{ display: "flex", alignItems: "center", mb: 2, marginRight: 1 }}>
+                    <Img src={configIcon}
+                      loader={
+                        <Typography variant="h5" gutterBottom>
+                          Loading...
+                        </Typography>
+                      }
+                      unloader={
+                        <Typography variant="h5" gutterBottom>
+                          Failed to load.
+                        </Typography>
+                      }
+                      style={{
+                      }} />
+                    {/* <SettingsIcon sx={{ color: "#ff6b35", fontSize: 34, marginRight: 1 }} /> */}
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        fontFamily: "'Barlow-SemiBold', Helvetica",
+                        fontWeight: "bold",
+                        color: "#303030",
+                        marginLeft: 1,
+                      }}
+                    >
+                      {card.title}
+                    </Typography>
+                  </Box>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      whiteSpace: "pre-line",
+                      fontFamily: "'Poppins', sans-serif",
+                      color: "#303030",
+                    }}
+                  >
+                    {card.content}
+                  </Typography>
+                </Box>
+              </Paper>
+            </Box>
           </Grid>
         ))}
       </Grid>

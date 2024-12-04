@@ -9,9 +9,14 @@ import {
   Typography,
   Collapse,
 } from "@mui/material";
-import { ExpandMore, ExpandLess, StarBorder } from "@mui/icons-material";
-
-// Importando as imagens dos ícones
+import {
+  ExpandMore,
+  ExpandLess,
+  LocalOffer,
+  Description,
+  ShoppingBag,
+  StarBorder,
+} from "@mui/icons-material";
 import logoMenuRetracted from "../assets/menu-icons/logo-menu-retraido.png";
 import logoMenuExpanded from "../assets/menu-icons/logo-menu-expandido.png";
 import menuStatusIcon from "../assets/menu-icons/menu-status-icon.png";
@@ -26,7 +31,7 @@ import menuDarkModeIcon from "../assets/menu-icons/menu-darkmode-icon.png";
 import menuLogoutIcon from "../assets/menu-icons/menu-logout-icon.png";
 
 interface MenuItem {
-  icon: string; // Caminho para o ícone
+  icon: string;
   text: string;
   hasSubmenu?: boolean;
   submenuItems?: { icon: JSX.Element; text: string }[];
@@ -36,7 +41,7 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
   const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>(
     {}
   );
-  
+
   const toggleSubmenu = (text: string) => {
     setOpenSubmenus((prevState) => ({
       ...prevState,
@@ -55,27 +60,48 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
     { icon: menuReportsIcon, text: "Reports" },
     "separator",
     { icon: menuDashboardIcon, text: "Dashboard" },
-    { icon: menuProductsIcon, text: "Produtos", hasSubmenu: true, submenuItems: [
+    {
+      icon: menuProductsIcon,
+      text: "Produtos",
+      hasSubmenu: true,
+      submenuItems: [
+        { icon: <LocalOffer />, text: "Catálogo de Produtos" },
+        { icon: <Description />, text: "Produtos Contratados" },
+        { icon: <ShoppingBag />, text: "Anúncios e Promoções" },
+      ],
+    },
+    {
+      icon: menuFinanceiroIcon,
+      text: "Financeiro",
+      hasSubmenu: true,
+      submenuItems: [
         { icon: <StarBorder />, text: "Submenu 1" },
         { icon: <StarBorder />, text: "Submenu 2" },
       ],
     },
-    { icon: menuFinanceiroIcon, text: "Financeiro", hasSubmenu: true, submenuItems: [
+    {
+      icon: menuSuporteIcon,
+      text: "Suporte",
+      hasSubmenu: true,
+      submenuItems: [
         { icon: <StarBorder />, text: "Submenu 1" },
         { icon: <StarBorder />, text: "Submenu 2" },
       ],
     },
-    { icon: menuSuporteIcon, text: "Suporte", hasSubmenu: true, submenuItems: [
+    {
+      icon: menuPerfilIcon,
+      text: "Perfil",
+      hasSubmenu: true,
+      submenuItems: [
         { icon: <StarBorder />, text: "Submenu 1" },
         { icon: <StarBorder />, text: "Submenu 2" },
       ],
     },
-    { icon: menuPerfilIcon, text: "Perfil", hasSubmenu: true, submenuItems: [
-        { icon: <StarBorder />, text: "Submenu 1" },
-        { icon: <StarBorder />, text: "Submenu 2" },
-      ],
-    },
-    { icon: menuNewsIcon, text: "Notícias", hasSubmenu: true, submenuItems: [
+    {
+      icon: menuNewsIcon,
+      text: "Notícias",
+      hasSubmenu: true,
+      submenuItems: [
         { icon: <StarBorder />, text: "Submenu 1" },
         { icon: <StarBorder />, text: "Submenu 2" },
       ],
@@ -124,8 +150,7 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
             <Typography
               variant="h6"
               sx={{ ml: 2, fontWeight: "bold", color: "white" }}
-            >
-            </Typography>
+            ></Typography>
             <img
               src={logoMenuExpanded}
               alt="Logo Expandido"
@@ -141,105 +166,114 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
         )}
       </Box>
 
-      {/* Menu Items */}
-      <List sx={{ width: "100%", flexGrow: 1 }}>
-        {menuItems.map((item, index) =>
-          item === "separator" ? (
-            <Divider key={index} sx={{ my: 1, mx: expanded ? 2 : 0 }} />
-          ) : (
-            <React.Fragment key={index}>
-              <ListItem
-                component="div"
-                sx={{
-                  display: "flex",
-                  justifyContent: expanded ? "flex-start" : "center",
-                  alignItems: "center",
-                  padding: "13px 20px",
-                  "&:hover": {
-                    backgroundColor: "#e0e0e0",
-                  },
-                }}
-                onClick={() =>
-                  item.hasSubmenu ? toggleSubmenu(item.text) : undefined
-                }
-              >
-                <ListItemIcon
+      {/* Menu Items - Rolável */}
+      <Box
+        sx={{
+          flexGrow: 1,
+          overflowY: "auto",
+          maxHeight: "calc(100vh - 200px)", // Ajusta para ocupar até 100vh menos espaços fixos
+          width: "100%",
+        }}
+      >
+        <List sx={{ width: "100%" }}>
+          {menuItems.map((item, index) =>
+            item === "separator" ? (
+              <Divider key={index} sx={{ my: 1, mx: expanded ? 2 : 0 }} />
+            ) : (
+              <React.Fragment key={index}>
+                <ListItem
+                  component="div"
                   sx={{
-                    minWidth: "40px",
-                    justifyContent: "center",
+                    display: "flex",
+                    justifyContent: expanded ? "flex-start" : "center",
+                    alignItems: "center",
+                    padding: "13px 20px",
+                    "&:hover": {
+                      backgroundColor: "#e0e0e0",
+                    },
                   }}
+                  onClick={() =>
+                    item.hasSubmenu ? toggleSubmenu(item.text) : undefined
+                  }
                 >
-                  <img
-                    src={item.icon}
-                    alt={item.text}
-                    style={{ height: 24, width: 24 }}
-                  />
-                </ListItemIcon>
-                {expanded && (
-                  <>
-                    <ListItemText
-                      primary={item.text}
-                      primaryTypographyProps={{
-                        style: { fontWeight: "500", color: "#4a4a4a" },
-                      }}
-                    />
-                    {item.hasSubmenu &&
-                      (openSubmenus[item.text] ? (
-                        <ExpandLess sx={{ color: "#4a4a4a" }} />
-                      ) : (
-                        <ExpandMore sx={{ color: "#4a4a4a" }} />
-                      ))}
-                  </>
-                )}
-              </ListItem>
-              {item.hasSubmenu && (
-                <Collapse
-                  in={openSubmenus[item.text]}
-                  timeout="auto"
-                  unmountOnExit
-                >
-                  <List
+                  <ListItemIcon
                     sx={{
-                      pl: expanded ? 4 : 0,
+                      minWidth: "40px",
+                      justifyContent: "center",
                     }}
                   >
-                    {item.submenuItems?.map((submenuItem, subIndex) => (
-                      <ListItem
-                        key={subIndex}
-                        sx={{
-                          display: "flex",
-                          justifyContent: expanded ? "flex-start" : "center",
-                          padding: "10px 20px",
-                          "&:hover": {
-                            backgroundColor: "#e0e0e0",
-                          },
+                    <img
+                      src={item.icon}
+                      alt={item.text}
+                      style={{ height: 24, width: 24 }}
+                    />
+                  </ListItemIcon>
+                  {expanded && (
+                    <>
+                      <ListItemText
+                        primary={item.text}
+                        primaryTypographyProps={{
+                          style: { fontWeight: "500", color: "#4a4a4a" },
                         }}
-                      >
-                        <ListItemIcon
+                      />
+                      {item.hasSubmenu &&
+                        (openSubmenus[item.text] ? (
+                          <ExpandLess sx={{ color: "#4a4a4a" }} />
+                        ) : (
+                          <ExpandMore sx={{ color: "#4a4a4a" }} />
+                        ))}
+                    </>
+                  )}
+                </ListItem>
+                {item.hasSubmenu && (
+                  <Collapse
+                    in={openSubmenus[item.text]}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    <List
+                      sx={{
+                        pl: expanded ? 4 : 0,
+                      }}
+                    >
+                      {item.submenuItems?.map((submenuItem, subIndex) => (
+                        <ListItem
+                          key={subIndex}
                           sx={{
-                            minWidth: "40px",
-                            justifyContent: "center",
+                            display: "flex",
+                            justifyContent: expanded ? "flex-start" : "center",
+                            padding: "10px 20px",
+                            "&:hover": {
+                              backgroundColor: "#e0e0e0",
+                            },
                           }}
                         >
-                          {submenuItem.icon}
-                        </ListItemIcon>
-                        {expanded && (
-                          <ListItemText
-                            primary={submenuItem.text}
-                            primaryTypographyProps={{
-                              style: { fontWeight: "400", color: "#4a4a4a" },
+                          <ListItemIcon
+                            sx={{
+                              minWidth: "40px",
+                              justifyContent: "center",
                             }}
-                          />
-                        )}
-                      </ListItem>
-                    ))}
-                  </List>
-                </Collapse>
-              )}
-            </React.Fragment>
-          )
-        )}
-      </List>
+                          >
+                            {submenuItem.icon}
+                          </ListItemIcon>
+                          {expanded && (
+                            <ListItemText
+                              primary={submenuItem.text}
+                              primaryTypographyProps={{
+                                style: { fontWeight: "400", color: "#4a4a4a" },
+                              }}
+                            />
+                          )}
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Collapse>
+                )}
+              </React.Fragment>
+            )
+          )}
+        </List>
+      </Box>
 
       {/* Bottom Items */}
       <Divider sx={{ my: 1, mx: expanded ? 2 : 0 }} />

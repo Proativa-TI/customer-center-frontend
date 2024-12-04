@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import Dashboard from "./pages/Dashboard";
+import CatalogoProdutos from "./pages/CatalogoProdutos";
 import LayoutPrincipal from "./components/LayoutPrincipal";
-import { JSX } from "react/jsx-runtime";
 
 const App = (): JSX.Element => {
   return (
@@ -20,6 +20,14 @@ const App = (): JSX.Element => {
           element={
             <LayoutPrincipal>
               <Dashboard />
+            </LayoutPrincipal>
+          }
+        />
+        <Route
+          path="/catalogo-produtos"
+          element={
+            <LayoutPrincipal>
+              <CatalogoProdutos />
             </LayoutPrincipal>
           }
         />

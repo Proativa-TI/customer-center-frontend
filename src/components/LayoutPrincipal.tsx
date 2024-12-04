@@ -8,20 +8,29 @@ const LayoutPrincipal = ({ children }: { children: React.ReactNode }) => {
   const [menuExpanded, setMenuExpanded] = useState(false);
 
   return (
-    <Box sx={{ display: "flex", height: "100vh" }}>
-      {/* Menu lateral */}
+    <Box sx={{ display: "flex", height: "100vh", overflow: "hidden" }}>
+      {/* Menu lateral fixo */}
       <MenuLateral expanded={menuExpanded} />
+
       <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
-        {/* Header */}
-        <Header expanded={menuExpanded} />
-        {/* Conteúdo principal */}
-        <Box sx={{ flexGrow: 1, p: 1.5 }}>
-          <IconButton onClick={() => setMenuExpanded((prev) => !prev)}>
+        {/* Header fixo */}
+        <Box sx={{ position: "sticky", top: 0, zIndex: 2 }}>
+          <Header expanded={menuExpanded} />
+        </Box>
+
+        {/* Conteúdo principal rolável */}
+        <Box
+          sx={{
+            flexGrow: 1,
+            overflow: "auto",
+            padding: 2,
+            backgroundColor: "#f8f9fa", // Fundo opcional para destacar o conteúdo
+          }}
+        >
+          <IconButton onClick={() => setMenuExpanded((prev) => !prev)} sx={{ mb: 2 }}>
             <MenuIcon />
           </IconButton>
-          <Box sx={{ flexGrow: 1, p: 2 }}>
-            {children}
-          </Box>
+          {children}
         </Box>
       </Box>
     </Box>
