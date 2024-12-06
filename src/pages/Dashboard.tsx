@@ -36,20 +36,22 @@ const Dashboard = () => {
   return (
     <Box sx={{ padding: 1 }}>
       
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h5" gutterBottom>
       <Img
             src={homeIcon}
             loader={
-              <Typography variant="h5" gutterBottom>
+              <Typography variant="h6" gutterBottom>
                 Loading...
               </Typography>
             }
             unloader={
-              <Typography variant="h5" gutterBottom>
+              <Typography variant="h6" gutterBottom>
                 Failed to load.
               </Typography>
             }
             style={{
+              height: "25px",
+              marginRight: 3,
             }}
           /> Dashboard
       </Typography>
@@ -58,14 +60,14 @@ const Dashboard = () => {
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Box sx={{ position: "relative" }}>
               <Paper
-                elevation={0} // Remove sombras (borda visual)
+                elevation={0} 
                 sx={{
                   display: "flex",
                   flexDirection: "column",
                   height: "100%",
                   backgroundColor: "#f1f1f1",
                   borderRadius: "5px",
-                  padding: "16px 16px 16px 30px", // Espaço extra à esquerda para a barra laranja
+                  padding: "16px 16px 16px 30px", 
                   overflow: "hidden",
                   position: "relative",
                 }}
@@ -87,12 +89,12 @@ const Dashboard = () => {
                   <Box sx={{ display: "flex", alignItems: "center", mb: 2, marginRight: 1 }}>
                     <Img src={configIcon}
                       loader={
-                        <Typography variant="h5" gutterBottom>
+                        <Typography variant="h6" gutterBottom>
                           Loading...
                         </Typography>
                       }
                       unloader={
-                        <Typography variant="h5" gutterBottom>
+                        <Typography variant="h6" gutterBottom>
                           Failed to load.
                         </Typography>
                       }
@@ -100,7 +102,7 @@ const Dashboard = () => {
                       }} />
                     {/* <SettingsIcon sx={{ color: "#ff6b35", fontSize: 34, marginRight: 1 }} /> */}
                     <Typography
-                      variant="h5"
+                      variant="h6"
                       sx={{
                         fontFamily: "'Barlow-SemiBold', Helvetica",
                         fontWeight: "bold",

@@ -187,7 +187,7 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
                     display: "flex",
                     justifyContent: expanded ? "flex-start" : "center",
                     alignItems: "center",
-                    padding: "13px 20px",
+                    padding: "8.5px 10px",
                     "&:hover": {
                       backgroundColor: "#e0e0e0",
                     },
@@ -233,7 +233,7 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
                   >
                     <List
                       sx={{
-                        pl: expanded ? 4 : 0,
+                        pl: expanded ? 2 : 0,
                       }}
                     >
                       {item.submenuItems?.map((submenuItem, subIndex) => (
@@ -242,7 +242,7 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
                           sx={{
                             display: "flex",
                             justifyContent: expanded ? "flex-start" : "center",
-                            padding: "10px 20px",
+                            padding: "4px 8px",
                             "&:hover": {
                               backgroundColor: "#e0e0e0",
                             },
@@ -286,7 +286,7 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
               display: "flex",
               justifyContent: expanded ? "flex-start" : "center",
               alignItems: "center",
-              padding: "13px 20px",
+              padding: "5px 10px",
               "&:hover": {
                 backgroundColor: "#e0e0e0",
               },

@@ -7,7 +7,7 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import { Search as SearchIcon, Group as GroupIcon } from "@mui/icons-material";
+import { Search as SearchIcon, Group as GroupIcon, LocalOffer } from "@mui/icons-material";
 import { Img } from "react-image";
 import configIcon from "../assets/config-orange-icon.png";
 
@@ -55,8 +55,8 @@ const CatalogoProdutos = () => {
     <Box sx={{ height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column" }}>
       {/* Header e título da página */}
       <Box sx={{ display: "flex", alignItems: "center", padding: 2 }}>
-        <GroupIcon sx={{ fontSize: 32, marginRight: 1 }} />
-        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+        <LocalOffer sx={{ fontSize: 30, marginRight: 1 }} />
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
           Catálogo de Produtos
         </Typography>
       </Box>
@@ -80,11 +80,14 @@ const CatalogoProdutos = () => {
         <Grid container spacing={3}>
           {filteredProducts.map((product, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
+              <Box sx={{ position: "relative" }}>
               <Paper
-                elevation={0} // Remove as bordas (elevação)
+                elevation={0}
                 sx={{
                   padding: 2,
                   borderRadius: "5px",
+                  pandding: "16px 16px 16px 30px",
+                  overflow: "hidden",
                   backgroundColor: "#f1f1f1",
                   display: "flex",
                   flexDirection: "column",
@@ -106,21 +109,21 @@ const CatalogoProdutos = () => {
                 />
                 {/* Conteúdo do Card */}
                 <Box sx={{  alignItems: "center", mb: 2, marginRight: 1, marginLeft: 2, }}>
-                    <Img src={configIcon}
+                    
+                  <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+                  <Img src={configIcon}
                       loader={
-                        <Typography variant="h5" gutterBottom>
+                        <Typography variant="h6" gutterBottom>
                           Loading...
                         </Typography>
                       }
                       unloader={
-                        <Typography variant="h5" gutterBottom>
+                        <Typography variant="h6" gutterBottom>
                           Failed to load.
                         </Typography>
                       }
                       style={{
-                    }} />
-                  <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 1 }}>
-                    {product.title}
+                    }} />  {product.title}
                   </Typography>
                   <Typography variant="body2" sx={{ whiteSpace: "pre-line", marginBottom: 1 }}>
                     {product.specs}
@@ -143,6 +146,7 @@ const CatalogoProdutos = () => {
                   </Button>
                 </Box>
               </Paper>
+            </Box>
             </Grid>
           ))}
         </Grid>

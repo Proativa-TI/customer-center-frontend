@@ -1,11 +1,21 @@
 import React from "react";
 import { AppBar, Toolbar, Box, Typography, IconButton } from "@mui/material";
-import { Person as PersonIcon, ShoppingCart as ShoppingCartIcon } from "@mui/icons-material";
+import {
+  Menu as MenuIcon,
+  Person as PersonIcon,
+  ShoppingCart as ShoppingCartIcon,
+} from "@mui/icons-material";
 
 // Importando o ícone personalizado para a barra de pesquisa
 import headerSearchIcon from "../assets/header-search-icon.png";
 
-const Header = ({ expanded }: { expanded: boolean }) => {
+const Header = ({
+  expanded,
+  setMenuExpanded,
+}: {
+  expanded: boolean;
+  setMenuExpanded: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
     <AppBar
       position="relative"
@@ -24,35 +34,40 @@ const Header = ({ expanded }: { expanded: boolean }) => {
           height: "62px", // Altura fixa para alinhar ao menu lateral
         }}
       >
-        {/* Barra de pesquisa */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            bgcolor: "white",
-            borderRadius: 1,
-            px: 2,
-            py: 0.5,
-            flexGrow: 1,
-            maxWidth: "360px",
-          }}
-        >
-          <img
-            src={headerSearchIcon}
-            alt="Ícone de Pesquisa"
-            style={{ height: 24, width: 24 }}
-          />
-          <input
-            type="text"
-            placeholder="Pesquisar..."
-            style={{
-              border: "none",
-              outline: "none",
-              marginLeft: "8px",
-              flex: 1,
-              fontFamily: "inherit",
+        {/* Menu Icon e Barra de Pesquisa */}
+        <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1, gap: 2, }}>
+          <IconButton onClick={() => setMenuExpanded((prev) => !prev)}>
+            <MenuIcon />
+          </IconButton>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              bgcolor: "white",
+              borderRadius: 1,
+              px: 2,
+              py: 0.5,
+              maxWidth: "360px",
+              flexGrow: 1,
             }}
-          />
+          >
+            <img
+              src={headerSearchIcon}
+              alt="Ícone de Pesquisa"
+              style={{ height: 24, width: 24 }}
+            />
+            <input
+              type="text"
+              placeholder="Pesquisar..."
+              style={{
+                border: "none",
+                outline: "none",
+                marginLeft: "8px",
+                flex: 1,
+                fontFamily: "inherit",
+              }}
+            />
+          </Box>
         </Box>
 
         {/* Ícones na direita */}
