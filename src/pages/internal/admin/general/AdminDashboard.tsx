@@ -1,0 +1,1 @@
+// Página responsável por exibir detalhes gerais do sistema para um usuário interno, separado por setor.

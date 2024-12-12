@@ -1,3 +1,5 @@
+// Página responsável por exibir os produtos contratados por um determinado cliente, exibindo os produtos contratados para aquele cliente específico.
+
 import React, { useState } from "react";
 import {
   Grid,

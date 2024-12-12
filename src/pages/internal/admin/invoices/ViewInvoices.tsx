@@ -1,0 +1,1 @@
+// Página responsável por visualizar uma lista de faturas, com atalho para gerenciar, cancelar, emitir e deletar. Possivel ver todas as faturas emitidas.

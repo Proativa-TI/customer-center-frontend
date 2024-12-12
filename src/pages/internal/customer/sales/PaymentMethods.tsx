@@ -1,0 +1,1 @@
+// Página responsável por exibir os métodos de pagamento pré-definidos pelo cliente, como será faturado e etc (possibilidade de cadastro de cartão e outras formas de pag.)

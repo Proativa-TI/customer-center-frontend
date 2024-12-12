@@ -1,3 +1,5 @@
+// Página para exibição de dash para acesso e visualização do cliente. Exibindo ultimas infos de um cliente específico.
+
 import React from "react";
 import { Grid, Paper, Typography, Box } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";

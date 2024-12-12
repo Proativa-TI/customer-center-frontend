@@ -1,3 +1,5 @@
+// Pagina responsável por exibir o catálogo de produtos a venda.
+
 import React, { useState } from "react";
 import {
   Box,

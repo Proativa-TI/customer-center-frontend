@@ -1,0 +1,1 @@
+// Página com intuito de acesso interno, para que admin possa visualizar os detalhes do cliente, seja perfil, log, chamados e produtos deste cliente.

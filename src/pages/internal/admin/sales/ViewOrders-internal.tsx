@@ -1,0 +1,1 @@
+// Página responsável para visualização de todos os pedidos realizados. Utilizada por usuários internos. (lista de pedidos e possibilidade de aceite e edição)

@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/extern/Login";
 import Cadastro from "./pages/extern/Register-1";
-import Dashboard from "./pages/general/Dashboard";
-import CatalogoProdutos from "./pages/products/ProductCatalog";
+import Dashboard from "./pages/internal/customer/general/Dashboard";
+import CatalogoProdutos from "./pages/internal/customer/products/ProductCatalog";
 import LayoutPrincipal from "./components/fixed-layers/LayoutPrincipal";
-import ProdutosContratados from "./pages/products/ContractedProducts";
+import ProdutosContratados from "./pages/internal/customer/products/ContractedProducts";
 
 const App = (): JSX.Element => {
   return (
