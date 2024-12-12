@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
-import Dashboard from "./pages/Dashboard";
-import CatalogoProdutos from "./pages/CatalogoProdutos";
-import LayoutPrincipal from "./components/LayoutPrincipal";
+import Login from "./pages/extern/Login";
+import Cadastro from "./pages/extern/Register-1";
+import Dashboard from "./pages/general/Dashboard";
+import CatalogoProdutos from "./pages/products/ProductCatalog";
+import LayoutPrincipal from "./components/fixed-layers/LayoutPrincipal";
+import ProdutosContratados from "./pages/products/ContractedProducts";
 
 const App = (): JSX.Element => {
   return (
@@ -28,6 +29,14 @@ const App = (): JSX.Element => {
           element={
             <LayoutPrincipal>
               <CatalogoProdutos />
+            </LayoutPrincipal>
+          }
+        />
+        <Route
+          path="/produtos-contratados"
+          element={
+            <LayoutPrincipal>
+              <ProdutosContratados />
             </LayoutPrincipal>
           }
         />

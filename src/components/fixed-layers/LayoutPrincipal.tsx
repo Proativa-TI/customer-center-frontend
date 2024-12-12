@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, IconButton } from "@mui/material";
-import MenuLateral from "./MenuLateral";
+import MenuLateral from "./SideMenu";
 import Header from "./header";
 import { Menu as MenuIcon } from "@mui/icons-material";
 
