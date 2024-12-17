@@ -14,9 +14,9 @@ import {
   FormGroup,
 } from "@mui/material";
 import { Img } from "react-image";
-import logo from "../assets/logo.png";
-import redeSocial from "../assets/redesocial-adentro.png";
-import loginCerts from "../assets/login-certs.png";
+import logo from "../../assets/general-icons/logo.png";
+import redeSocial from "../../assets/general-icons/redesocial-adentro.png";
+import loginCerts from "../../assets/general-icons/login-certs.png";
 import { JSX } from "react/jsx-runtime";
 
 const Cadastro = (): JSX.Element => {

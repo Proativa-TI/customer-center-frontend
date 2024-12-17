@@ -7,7 +7,7 @@ import {
 } from "@mui/icons-material";
 
 // Importando o ícone personalizado para a barra de pesquisa
-import headerSearchIcon from "../assets/header-search-icon.png";
+import headerSearchIcon from "../../assets/general-icons/header-search-icon.png";
 
 const Header = ({
   expanded,

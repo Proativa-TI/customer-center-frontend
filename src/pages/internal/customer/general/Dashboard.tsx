@@ -3,8 +3,8 @@
 import React from "react";
 import { Grid, Paper, Typography, Box } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
-import homeIcon from "../assets/dash-home-icon.png";
-import configIcon from "../assets/config-orange-icon.png";
+import homeIcon from "../../../../assets/general-icons/dash-home-icon.png";
+import configIcon from "../../../../assets/general-icons/config-orange-icon.png";
 import { Img } from "react-image";
 
 const Dashboard = () => {

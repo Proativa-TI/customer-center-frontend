@@ -17,30 +17,40 @@ import {
   ShoppingBag,
   StarBorder,
 } from "@mui/icons-material";
-import logoMenuRetracted from "../assets/menu-icons/logo-menu-retraido.png";
-import logoMenuExpanded from "../assets/menu-icons/logo-menu-expandido.png";
-import menuStatusIcon from "../assets/menu-icons/menu-status-icon.png";
-import menuReportsIcon from "../assets/menu-icons/menu-reports-icon.png";
-import menuDashboardIcon from "../assets/menu-icons/menu-dashboard-icon.png";
-import menuProductsIcon from "../assets/menu-icons/menu-products-icon.png";
-import menuFinanceiroIcon from "../assets/menu-icons/menu-financeiro-icon.png";
-import menuSuporteIcon from "../assets/menu-icons/menu-suporte-icon.png";
-import menuPerfilIcon from "../assets/menu-icons/menu-perfil-icon.png";
-import menuNewsIcon from "../assets/menu-icons/menu-news-icon.png";
-import menuDarkModeIcon from "../assets/menu-icons/menu-darkmode-icon.png";
-import menuLogoutIcon from "../assets/menu-icons/menu-logout-icon.png";
+
+import { useNavigate } from "react-router-dom";
+import logoMenuRetracted from "../../assets/menu-icons/logo-menu-withdrawn.png";
+import logoMenuExpanded from "../../assets/menu-icons/logo-menu-expanded.png";
+import menuStatusIcon from "../../assets/menu-icons/menu-status-icon.png";
+import menuReportsIcon from "../../assets/menu-icons/menu-reports-icon.png";
+import menuDashboardIcon from "../../assets/menu-icons/menu-dashboard-icon.png";
+import menuProductsIcon from "../../assets/menu-icons/menu-products-icon.png";
+import menuFinanceiroIcon from "../../assets/menu-icons/menu-financial-icon.png";
+import menuSuporteIcon from "../../assets/menu-icons/menu-support-icon.png";
+import menuPerfilIcon from "../../assets/menu-icons/menu-profile-icon.png";
+import menuNewsIcon from "../../assets/menu-icons/menu-news-icon.png";
+import menuDarkModeIcon from "../../assets/menu-icons/menu-darkmode-icon.png";
+import menuLogoutIcon from "../../assets/menu-icons/menu-logout-icon.png";
+
+interface SubmenuItem {
+  icon: JSX.Element;
+  text: string;
+  path?: string; // Adicione path aqui
+}
 
 interface MenuItem {
   icon: string;
   text: string;
+  path?: string; // Adicione path na interface principal
   hasSubmenu?: boolean;
-  submenuItems?: { icon: JSX.Element; text: string }[];
+  submenuItems?: SubmenuItem[]; // Use a interface SubmenuItem
 }
 
 const MenuLateral = ({ expanded }: { expanded: boolean }) => {
   const [openSubmenus, setOpenSubmenus] = useState<{ [key: string]: boolean }>(
     {}
   );
+  const navigate = useNavigate();
 
   const toggleSubmenu = (text: string) => {
     setOpenSubmenus((prevState) => ({
@@ -56,18 +66,18 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
   }, [expanded]);
 
   const menuItems: (MenuItem | "separator")[] = [
-    { icon: menuStatusIcon, text: "Status" },
-    { icon: menuReportsIcon, text: "Reports" },
+    { icon: menuStatusIcon, text: "Status", path: "/dashboard" },
+    { icon: menuReportsIcon, text: "Reports", path: "/admin/reports" },
     "separator",
-    { icon: menuDashboardIcon, text: "Dashboard" },
+    { icon: menuDashboardIcon, text: "Dashboard", path: "/dashboard" },
     {
       icon: menuProductsIcon,
       text: "Produtos",
       hasSubmenu: true,
       submenuItems: [
-        { icon: <LocalOffer />, text: "Catálogo de Produtos" },
-        { icon: <Description />, text: "Produtos Contratados" },
-        { icon: <ShoppingBag />, text: "Anúncios e Promoções" },
+        { icon: <LocalOffer />, text: "Catálogo de Produtos", path: "/catalogo-produtos" },
+        { icon: <Description />, text: "Produtos Contratados", path: "/produtos-contratados" },
+        { icon: <ShoppingBag />, text: "Gerenciar Produtos", path: "/admin/manage-products" },
       ],
     },
     {
@@ -75,8 +85,10 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
       text: "Financeiro",
       hasSubmenu: true,
       submenuItems: [
-        { icon: <StarBorder />, text: "Submenu 1" },
-        { icon: <StarBorder />, text: "Submenu 2" },
+        { icon: <StarBorder />, text: "Visualizar Faturas", path: "/admin/view-invoices" },
+        { icon: <StarBorder />, text: "Gerenciar Faturas", path: "/admin/manage-invoices" },
+        { icon: <StarBorder />, text: "Visualizar Pedidos", path: "/admin/view-orders" },
+        { icon: <StarBorder />, text: "Gerenciar Pedidos", path: "/admin/manage-orders" },
       ],
     },
     {
@@ -93,8 +105,8 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
       text: "Perfil",
       hasSubmenu: true,
       submenuItems: [
-        { icon: <StarBorder />, text: "Submenu 1" },
-        { icon: <StarBorder />, text: "Submenu 2" },
+        { icon: <StarBorder />, text: "Ver Cliente", path: "/admin/view-customer" },
+        { icon: <StarBorder />, text: "Gerenciar Cliente", path: "/admin/manage-customer" },
       ],
     },
     {
@@ -110,7 +122,7 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
 
   const bottomItems: MenuItem[] = [
     { icon: menuDarkModeIcon, text: "Dark Mode" },
-    { icon: menuLogoutIcon, text: "Log Out" },
+    { icon: menuLogoutIcon, text: "Log Out", path: "/" },
   ];
 
   return (
@@ -239,6 +251,9 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
                       {item.submenuItems?.map((submenuItem, subIndex) => (
                         <ListItem
                           key={subIndex}
+                          onClick={() => {
+                            if (submenuItem.path) navigate(submenuItem.path);
+                          }}
                           sx={{
                             display: "flex",
                             justifyContent: expanded ? "flex-start" : "center",
@@ -290,6 +305,9 @@ const MenuLateral = ({ expanded }: { expanded: boolean }) => {
               "&:hover": {
                 backgroundColor: "#e0e0e0",
               },
+            }}
+            onClick={() => {
+              if (item.path) navigate(item.path);
             }}
           >
             <ListItemIcon

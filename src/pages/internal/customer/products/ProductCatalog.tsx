@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Search as SearchIcon, Group as GroupIcon, LocalOffer } from "@mui/icons-material";
 import { Img } from "react-image";
-import configIcon from "../assets/config-orange-icon.png";
+import configIcon from "../../../../assets/general-icons/config-orange-icon.png";
 
 const CatalogoProdutos = () => {
   const [activeFilter, setActiveFilter] = useState("Todos");
